@@ -1,4 +1,4 @@
 package com.budgetairlines.Flights;
 
-public class flightBooking {
+public class FlightBookingService {
 }
