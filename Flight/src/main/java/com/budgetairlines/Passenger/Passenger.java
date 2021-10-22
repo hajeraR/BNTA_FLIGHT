@@ -8,16 +8,16 @@ public class Passenger {
     private String email;
     private Gender gender;
     private Integer phoneNumber;
-    private Integer id;
+//    private Integer id;
     private String passportNumber;
 
 
-    public Passenger(String name, String email, Gender gender, Integer phoneNumber, Integer id, String passportNumber) {
+    public Passenger(String name, String email, Gender gender, Integer phoneNumber, String passportNumber) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.id = id;
+//        this.id = id;
         this.passportNumber = passportNumber;
     }
 
@@ -53,14 +53,6 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getPassportNumber() {
         return passportNumber;
     }
@@ -76,7 +68,7 @@ public class Passenger {
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
                 ", phoneNumber=" + phoneNumber +
-                ", id=" + id +
+
                 ", passportNumber='" + passportNumber + '\'' +
                 '}';
     }
@@ -86,11 +78,11 @@ public class Passenger {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passenger passenger = (Passenger) o;
-        return Objects.equals(name, passenger.name) && Objects.equals(email, passenger.email) && gender == passenger.gender && Objects.equals(phoneNumber, passenger.phoneNumber) && Objects.equals(id, passenger.id) && Objects.equals(passportNumber, passenger.passportNumber);
+        return Objects.equals(name, passenger.name) && Objects.equals(email, passenger.email) && gender == passenger.gender && Objects.equals(phoneNumber, passenger.phoneNumber)  && Objects.equals(passportNumber, passenger.passportNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, email, gender, phoneNumber, id, passportNumber);
+        return Objects.hash(name, email, gender, phoneNumber,  passportNumber);
     }
 }
