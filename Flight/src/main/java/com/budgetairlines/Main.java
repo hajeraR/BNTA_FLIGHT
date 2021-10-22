@@ -13,10 +13,10 @@ public class Main {
 
        //user input
         //Welcome to budgetairlines
-        System.out.println("Welcome to Budget Airlines");
+        //System.out.println("Welcome to Budget Airlines");
         //choose an option from below
-        System.out.println("Choose an option from below");
-        System.out.println("Option 1 - Book new flight \n Option 2 - Manage Booking \n (1/2)");
+        System.out.println("Welcome to the Psychedelic Airline experience! Choose an option from below");
+        System.out.println("\n Option 1 - Book new flight \n Option 2 - Manage Booking \n (1/2)");
         Scanner scanner =new Scanner(System.in);
         String input = scanner.nextLine();
         //switch statements for options (case)
@@ -24,10 +24,9 @@ public class Main {
             case "1":
                 //replaced with the methods for each option
                 flightBookingService.displayFlights();
-
                 break;
             case "2":
-                System.out.println("Add new flight");
+                System.out.println("Manage Booking");
                 break;
         }
         //logic in those options
