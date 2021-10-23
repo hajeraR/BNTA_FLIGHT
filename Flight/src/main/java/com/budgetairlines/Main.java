@@ -4,53 +4,25 @@ import com.budgetairlines.Flights.FlightBookingService;
 import com.budgetairlines.Passenger.Gender;
 import com.budgetairlines.Passenger.ID;
 import com.budgetairlines.Passenger.Passenger;
+import com.budgetairlines.Passenger.PassengerService;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        FlightBookingService flightBookingService=new FlightBookingService();
 
-       //user input
-        //Welcome to budgetairlines
-        //System.out.println("Welcome to Budget Airlines");
-        //choose an option from below
-        System.out.println("Welcome to the Psychedelic Airline experience! Choose an option from below");
-        System.out.println("\n Option 1 - Book new flight \n Option 2 - Manage Booking \n (1/2)");
-        Scanner scanner =new Scanner(System.in);
-        String input = scanner.nextLine();
-        //switch statements for options (case)
-        switch(input){
-            case "1":
-                //replaced with the methods for each option
-                flightBookingService.displayFlights();
-                break;
-            case "2":
-                System.out.println("Manage Booking");
-                break;
-        }
-        //logic in those options
+        ID id = new ID();
+        id.generateId("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", 6);
+
+      FlightBookingService flightBookingService=new FlightBookingService();
+      PassengerService passengerService = new PassengerService();
+
+      Passenger[] passengers = new Passenger[5];
 
 
-//        //Booking Flight
-//        //Name:
-//        System.out.println("Please enter your name:");
-//        String name = scanner.nextLine();
-//
-//        //Email
-//        System.out.println("Please enter your email:");
-//        String email = scanner.nextLine();
-//
-//        //Phone Number
-//        System.out.println("Please enter your Phone Number:");
-//        String mobile = scanner.nextLine();
-//
-//        //Passport Number
-//        System.out.println("Please enter your Passport Number:");
-//        String passport = scanner.nextLine();
-//
-//
-//        ID id = new ID();
+      flightBookingService.startBooking();
+
+//      ID id = new ID();
 //        Passenger passenger1 = new Passenger("Hajera","hajera@bnta.com", Gender.FEMALE,0740303030, "ab1234567");
 //        System.out.println(passenger1.toString());
 //

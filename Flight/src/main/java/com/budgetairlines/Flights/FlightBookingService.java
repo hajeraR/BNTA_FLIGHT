@@ -1,5 +1,7 @@
 package com.budgetairlines.Flights;
 
+import com.budgetairlines.Passenger.PassengerService;
+
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Scanner;
@@ -13,6 +15,27 @@ public class FlightBookingService {
     FlightDetails australia = new FlightDetails("Down Under", "A really, really, really long flight!", "DU-123", FlightCountry.AUSTRALIA, FlightCountry.ENGLAND, LocalDateTime.of(2021, 12, 21 ,13, 30), 800.00, 10, 0);
 
     FlightDetails saudi = new FlightDetails("Pilgrimage to Mecca","Enter at own risk, women cannot drive!", "SA-232",FlightCountry.SAUDI,FlightCountry.ENGLAND, LocalDateTime.of(2022, 03, 12 ,12, 30), 900.0,75,0);
+
+    PassengerService passengerService = new PassengerService();
+
+
+    public void startBooking(){
+        FlightBookingService flightBookingService = new FlightBookingService();
+        System.out.println("Welcome to the Psychedelic Airline experience! Choose an option from below");
+        System.out.println("\n Option 1 - Book new flight \n Option 2 - Manage Booking \n (1/2)");
+        Scanner scanner =new Scanner(System.in);
+        String input = scanner.nextLine();
+        //switch statements for options (case)
+        switch(input){
+            case "1":
+                //replaced with the methods for each option
+                flightBookingService.displayFlights();
+                break;
+            case "2":
+                System.out.println("Manage Booking");
+                break;
+        }
+    }
 
 
     public void displayFlights(){
@@ -38,8 +61,15 @@ public class FlightBookingService {
                 System.out.println("\n Option 1: Book Now \n Option 2: Cancel");
                 String choice = scanner.nextLine();
                 switch (choice) {
+
                     case "1":
-                        System.out.println("Go to Passenger Service Methods");
+                        if (peru.getBookedSeats() + 1 < peru.getCapacity()){
+                            //PassengerService passengerService = new PassengerService();
+                            passengerService.enterPassengerDetails();
+                        } else System.out.println("Plane fully booked!");
+
+                        break;
+
                     case "2":
                         break;
                 }
@@ -54,6 +84,7 @@ public class FlightBookingService {
                 switch (choice2) {
                     case "1":
                         System.out.println("Go to Passenger Service Methods");
+                        break;
                     case "2":
                         break;
                 }
@@ -86,7 +117,8 @@ public class FlightBookingService {
 
     }
 
-    }
+    
+        }
 }
 
 

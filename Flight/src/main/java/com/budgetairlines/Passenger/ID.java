@@ -1,15 +1,31 @@
 package com.budgetairlines.Passenger;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.lang.Math;
 
 public class ID {
 
-    public int generateId() {
-        int int_random = ThreadLocalRandom.current().nextInt();
-        return (Math.abs(int_random));
+
+    public static void generateId(String idChars, int length) {
+       // String idChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//            int length = 6;
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            sb.append(idChars.charAt(random.nextInt(idChars
+                    .length())));
+        }
+
+        //return sb.toString();
+        System.out.println(sb.toString());
     }
-
-
-
 }
+
+
+
+
+
+
+
+

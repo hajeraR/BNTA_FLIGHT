@@ -3,7 +3,7 @@ package com.budgetairlines.Passenger;
 import java.util.Objects;
 
 public class Passenger {
-
+    private ID id;
     private String name;
     private String email;
     private Gender gender;
@@ -19,6 +19,7 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
 //        this.id = id;
         this.passportNumber = passportNumber;
+
     }
 
     public String getName() {
