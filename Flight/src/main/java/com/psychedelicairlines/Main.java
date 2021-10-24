@@ -8,13 +8,16 @@ import com.psychedelicairlines.Passenger.PassengerService;
 public class Main {
     public static void main(String[] args) {
 
-      FlightBookingService flightBookingService=new FlightBookingService();
+        FlightBookingService flightBookingService = new FlightBookingService();
 
-      PassengerService passengerService = new PassengerService();
+        PassengerService passengerService = new PassengerService();
 
-      Passenger[] passengers = new Passenger[5];
+        Passenger[] passengers = new Passenger[5];
 
-      flightBookingService.startBooking();
+
+            for (int i = 0; i < 3; i++) {
+                flightBookingService.startBooking();
+            }
 
     }
 }

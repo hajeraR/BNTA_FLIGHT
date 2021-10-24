@@ -6,7 +6,11 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Scanner;
 
+
+
 public class FlightBookingService {
+
+
 
     private FlightCountry country;
 
@@ -28,35 +32,42 @@ public class FlightBookingService {
 
     FlightDetails peru = new FlightDetails("Llama", "We ran out of money...", "PE-234", FlightCountry.PERU, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.NOVEMBER, 12, 13, 47), 957.00, 20, 0);
 
-    FlightDetails madagascar = new FlightDetails("Seaplane Seabird", "Re-purposed from WW2. Book at own risk. BYOB.", "SS-001", FlightCountry.MADAGASCAR, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.JUNE, 20, 10, 30), 2300.00, 12, 0);
+    FlightDetails madagascar = new FlightDetails("Seaplane Seabird", "Re-purposed from WW2. Book at own risk. BYOB.", "SS-001", FlightCountry.MADAGASCAR, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.JUNE, 20, 10, 30), 2300.00, 20, 0);
 
-    FlightDetails australia = new FlightDetails("Down Under", "A really, really, really long flight!", "DU-123", FlightCountry.AUSTRALIA, FlightCountry.ENGLAND, LocalDateTime.of(2021, 12, 21 ,13, 30), 800.00, 10, 0);
+    FlightDetails australia = new FlightDetails("Down Under", "A really, really, really long flight!", "DU-123", FlightCountry.AUSTRALIA, FlightCountry.ENGLAND, LocalDateTime.of(2021, 12, 21 ,13, 30), 800.00, 20, 0);
 
-    FlightDetails saudi = new FlightDetails("Pilgrimage to Mecca","Enter at own risk, women cannot drive!", "SA-232",FlightCountry.SAUDI,FlightCountry.ENGLAND, LocalDateTime.of(2022, 03, 12 ,12, 30), 900.0,75,0);
+    FlightDetails saudi = new FlightDetails("Pilgrimage to Mecca","Enter at own risk, women cannot drive!", "SA-232",FlightCountry.SAUDI,FlightCountry.ENGLAND, LocalDateTime.of(2022, 03, 12 ,12, 30), 900.0,20,0);
 
     PassengerService passengerService = new PassengerService();
 
    // FlightBookingService flightBookingService = new FlightBookingService();
 
-    public void startBooking(){
+    public void startBooking() {
 
         FlightBookingService flightBookingService = new FlightBookingService();
         System.out.println("");
         System.out.println("Welcome to the Psychedelic Airline experience! Choose an option from below:");
-        System.out.println("\n Option 1 - Book new flight \n Option 2 - Manage Booking \n (1/2)");
-        Scanner scanner =new Scanner(System.in);
-        String input = scanner.nextLine();
+        System.out.println("\n Option 1 - Book new flight \n Option 2 - Manage Booking \n Option 3 - Exit");
+        Scanner scanner = new Scanner(System.in);
+        Integer input = scanner.nextInt();
 
-        switch(input){
-            case "1":
-                flightBookingService.displayFlights();
-                break;
-            case "2":
-                System.out.println("Manage Booking");
-                break;
-        }
+        do {
+            switch (input) {
+                case 1:
+                    flightBookingService.displayFlights();
+                    break;
+                case 2:
+                    System.out.println("Manage Booking");
+                    break;
+                case 3:
+                    System.out.println("Exit");
+                    System.exit(0);
+                    break;
+
+
+            }
+        } while (input <= 2);
     }
-
 
     public void displayFlights(){
 
