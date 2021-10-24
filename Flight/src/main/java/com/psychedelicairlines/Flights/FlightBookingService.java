@@ -8,7 +8,23 @@ import java.util.Scanner;
 
 public class FlightBookingService {
 
-    private String country;
+    private FlightCountry country;
+
+//    public FlightBookingService(FlightCountry country) {
+//        this.country = country;
+//    }
+
+    @Override
+    public String toString() {
+        return "FlightBookingService{" +
+                "country=" + country +
+                ", peru=" + peru +
+                ", madagascar=" + madagascar +
+                ", australia=" + australia +
+                ", saudi=" + saudi +
+                ", passengerService=" + passengerService +
+                '}';
+    }
 
     FlightDetails peru = new FlightDetails("Llama", "We ran out of money...", "PE-234", FlightCountry.PERU, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.NOVEMBER, 12, 13, 47), 957.00, 20, 0);
 
@@ -20,6 +36,7 @@ public class FlightBookingService {
 
     PassengerService passengerService = new PassengerService();
 
+   // FlightBookingService flightBookingService = new FlightBookingService();
 
     public void startBooking(){
 
@@ -43,7 +60,7 @@ public class FlightBookingService {
 
     public void displayFlights(){
 
-        FlightBookingService flightBookingService = new FlightBookingService();
+       FlightBookingService flightBookingService = new FlightBookingService();
 
         System.out.println("Option 1: " + peru.getDestination().toString() + "\n" + peru.getDate().toString() + "\n" + "£" + peru.getPrice().toString());
         System.out.println("");
@@ -71,7 +88,7 @@ public class FlightBookingService {
                     case "1":
                         if (peru.getBookedSeats() + 1 < peru.getCapacity()){
                             passengerService.enterPassengerDetails();
-                            String country = FlightCountry.PERU.toString();
+                            String country = flightBookingService.setCountry(FlightCountry.PERU);
                             System.out.println("");
                             System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
@@ -109,7 +126,7 @@ public class FlightBookingService {
                     case "1":
                         if (madagascar.getBookedSeats() + 1 < madagascar.getCapacity()){
                             passengerService.enterPassengerDetails();
-                            String country = FlightCountry.MADAGASCAR.toString();
+                            String country = flightBookingService.setCountry(FlightCountry.MADAGASCAR);
                             System.out.println("");
                             System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
@@ -146,7 +163,7 @@ public class FlightBookingService {
                     case "1":
                         if (saudi.getBookedSeats() + 1 < saudi.getCapacity()){
                             passengerService.enterPassengerDetails();
-                            String country = FlightCountry.SAUDI.toString();
+                            String country = flightBookingService.setCountry(FlightCountry.SAUDI);
                             System.out.println("");
                             System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
@@ -183,7 +200,7 @@ public class FlightBookingService {
                     case "1":
                         if (australia.getBookedSeats() + 1 < australia.getCapacity()){
                             passengerService.enterPassengerDetails();
-                            String country = FlightCountry.AUSTRALIA.toString();
+                            String country = flightBookingService.setCountry(FlightCountry.AUSTRALIA);
                             System.out.println("");
                             System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
@@ -197,6 +214,8 @@ public class FlightBookingService {
                             case "1":
                                 flightBookingService.displayFlights();
                                 break;
+
+
 
                             case "2":
                                 break;
@@ -217,12 +236,14 @@ public class FlightBookingService {
 
 
 
-    public String getCountry() {
+    public FlightCountry  getCountry() {
         return country;
     }
 
-    public void setName(String country) {
+    public String setCountry(FlightCountry country) {
         this.country = country;
+        //System.out.println(country.toString();
+        return country.toString();
     }
 }
 

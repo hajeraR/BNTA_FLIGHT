@@ -1,18 +1,21 @@
 package com.psychedelicairlines.Passenger;
 
+import com.psychedelicairlines.Flights.FlightCountry;
+
 import java.util.Objects;
 
 public class Passenger {
-    private StringBuilder id;
-    private String country;
+
+    private FlightCountry country;
     private String name;
     private String email;
     private Gender gender;
     private Integer phoneNumber;
     //private String id;
     private String passportNumber;
+    private StringBuilder id;
 
-    public Passenger(StringBuilder id, String country, String name, String email, Gender gender, Integer phoneNumber, String passportNumber) {
+    public Passenger( FlightCountry country, String name, String email, Gender gender, Integer phoneNumber, String passportNumber, StringBuilder id) {
         this.id = id;
         this.country = country;
         this.name = name;

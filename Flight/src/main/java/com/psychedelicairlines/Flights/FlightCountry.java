@@ -6,4 +6,5 @@ public enum FlightCountry {
     AUSTRALIA,
     PERU,
     SAUDI,
+    COUNTRY
 }
