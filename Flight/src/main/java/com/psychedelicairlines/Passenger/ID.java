@@ -5,8 +5,8 @@ import java.util.Random;
 public class ID {
 
 
-    public static void generateId(String idChars, int length) {
-       // String idChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    public static StringBuilder generateId(String idChars, int length) {
+        // String idChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 //            int length = 6;
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
@@ -15,15 +15,7 @@ public class ID {
                     .length())));
         }
 
-        //return sb.toString();
-        System.out.println(sb.toString());
+        return new StringBuilder(sb.toString());
+    //    System.out.println(sb.toString());
     }
 }
-
-
-
-
-
-
-
-

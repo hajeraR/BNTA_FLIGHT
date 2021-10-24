@@ -3,24 +3,40 @@ package com.psychedelicairlines.Passenger;
 import java.util.Objects;
 
 public class Passenger {
-    private ID id;
+    private StringBuilder id;
+    private String country;
     private String name;
     private String email;
     private Gender gender;
     private Integer phoneNumber;
-//    private Integer id;
+    //private String id;
     private String passportNumber;
 
-
-    public Passenger(String name, String email, Gender gender, Integer phoneNumber, String passportNumber) {
+    public Passenger(StringBuilder id, String country, String name, String email, Gender gender, Integer phoneNumber, String passportNumber) {
+        this.id = id;
+        this.country = country;
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-//        this.id = id;
         this.passportNumber = passportNumber;
-
     }
+
+    public StringBuilder getId() {
+        return id;
+    }
+
+    public void setId(StringBuilder id) {
+        this.id = id;
+    }
+
+//    public String getCountry() {
+//        return country;
+//    }
+//
+//    public void setCountry(String country) {
+//        this.country = country;
+//    }
 
     public String getName() {
         return name;
@@ -65,7 +81,9 @@ public class Passenger {
     @Override
     public String toString() {
         return "Passenger{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                "country=" + country +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
                 ", phoneNumber=" + phoneNumber +
@@ -78,11 +96,11 @@ public class Passenger {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passenger passenger = (Passenger) o;
-        return Objects.equals(name, passenger.name) && Objects.equals(email, passenger.email) && gender == passenger.gender && Objects.equals(phoneNumber, passenger.phoneNumber)  && Objects.equals(passportNumber, passenger.passportNumber);
+        return Objects.equals(id, passenger.id) && Objects.equals(name, passenger.name) && Objects.equals(email, passenger.email) && gender == passenger.gender && Objects.equals(phoneNumber, passenger.phoneNumber) && Objects.equals(passportNumber, passenger.passportNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, email, gender, phoneNumber,  passportNumber);
+        return Objects.hash(id, name, email, gender, phoneNumber, passportNumber);
     }
 }

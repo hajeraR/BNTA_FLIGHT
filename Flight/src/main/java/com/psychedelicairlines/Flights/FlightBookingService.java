@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class FlightBookingService {
 
+    private String country;
+
     FlightDetails peru = new FlightDetails("Llama", "We ran out of money...", "PE-234", FlightCountry.PERU, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.NOVEMBER, 12, 13, 47), 957.00, 20, 0);
 
     FlightDetails madagascar = new FlightDetails("Seaplane Seabird", "Re-purposed from WW2. Book at own risk. BYOB.", "SS-001", FlightCountry.MADAGASCAR, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.JUNE, 20, 10, 30), 2300.00, 12, 0);
@@ -107,6 +109,11 @@ public class FlightBookingService {
                     case "1":
                         if (madagascar.getBookedSeats() + 1 < madagascar.getCapacity()){
                             passengerService.enterPassengerDetails();
+                            String country = FlightCountry.MADAGASCAR.toString();
+                            System.out.println("");
+                            System.out.println("Your flight to " + country + " is confirmed!");
+                            System.out.println("");
+                            System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
                         } else System.out.println("Plane fully booked! You can no longer mingle with Madagascar's Malagasy giant rat!");
                         System.out.println("");
                         System.out.println("\n Option 1: Book another flight. \n Option 2: Cancel");
@@ -139,6 +146,11 @@ public class FlightBookingService {
                     case "1":
                         if (saudi.getBookedSeats() + 1 < saudi.getCapacity()){
                             passengerService.enterPassengerDetails();
+                            String country = FlightCountry.SAUDI.toString();
+                            System.out.println("");
+                            System.out.println("Your flight to " + country + " is confirmed!");
+                            System.out.println("");
+                            System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
                         } else System.out.println("Plane fully booked! Can't taste no Arabian delights. Hah, sucks to be you!");
 
                         System.out.println("");
@@ -171,6 +183,11 @@ public class FlightBookingService {
                     case "1":
                         if (australia.getBookedSeats() + 1 < australia.getCapacity()){
                             passengerService.enterPassengerDetails();
+                            String country = FlightCountry.AUSTRALIA.toString();
+                            System.out.println("");
+                            System.out.println("Your flight to " + country + " is confirmed!");
+                            System.out.println("");
+                            System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
                         } else System.out.println("Plane fully booked! No surfing those beautiful sandy waves for you!");
 
                         System.out.println("");
@@ -197,6 +214,16 @@ public class FlightBookingService {
 
     
         }
+
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setName(String country) {
+        this.country = country;
+    }
 }
 
 
