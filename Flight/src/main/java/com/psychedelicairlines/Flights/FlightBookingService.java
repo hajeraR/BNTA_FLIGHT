@@ -69,6 +69,12 @@ public class FlightBookingService {
                     case "1":
                         if (peru.getBookedSeats() + 1 < peru.getCapacity()){
                             passengerService.enterPassengerDetails();
+                            String country = FlightCountry.PERU.toString();
+                            System.out.println("");
+                            System.out.println("Your flight to " + country + " is confirmed!");
+                            System.out.println("");
+                            System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
+
                         } else System.out.println("Unable to book, plane is full! You missed out on Peru's 3000 variety potatoes.");
                         System.out.println("");
                         System.out.println("\n Option 1: Book another flight. \n Option 2: Cancel");
@@ -82,6 +88,7 @@ public class FlightBookingService {
                                 break;
 
                         }
+
                         break;
 
                     case "2":
@@ -132,7 +139,7 @@ public class FlightBookingService {
                     case "1":
                         if (saudi.getBookedSeats() + 1 < saudi.getCapacity()){
                             passengerService.enterPassengerDetails();
-                        } else System.out.println("Plane fully booked! Can't taste no Arabian delights, sucks to be you!");
+                        } else System.out.println("Plane fully booked! Can't taste no Arabian delights. Hah, sucks to be you!");
 
                         System.out.println("");
                         System.out.println("\n Option 1: Book another flight. \n Option 2: Cancel");
