@@ -27,16 +27,19 @@ public class PassengerService {
         Integer mobile = details.nextInt();
 
         System.out.println("");
-        ID id = new ID();
-        System.out.println("Booking ID:");
-        id.generateId("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", 6);
+        ID idGenerate = new ID();
+        StringBuilder id = idGenerate.generateId("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", 6);
+
+
+        FlightBookingService service = new FlightBookingService();
+        String country = service.getCountry();
 
         //show all of the flight details and passenger details and ideally send this all in an email to user:
         System.out.println("");
         System.out.println("Here are your personal details:");
         System.out.println("");
-        Passenger passenger = new Passenger(name, email, gender, mobile, passport);
-        System.out.println( passenger.toString());
+        Passenger passenger = new Passenger(id, country, name, email, gender, mobile, passport);
+        System.out.println(passenger.toString());
 
 
 
