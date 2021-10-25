@@ -5,7 +5,7 @@ import com.psychedelicairlines.Flights.FlightCountry;
 import java.util.Objects;
 
 public class Passenger {
-
+    private StringBuilder id;
     private FlightCountry country;
     private String name;
     private String email;
@@ -13,9 +13,8 @@ public class Passenger {
     private Integer phoneNumber;
     //private String id;
     private String passportNumber;
-    private StringBuilder id;
 
-    public Passenger( FlightCountry country, String name, String email, Gender gender, Integer phoneNumber, String passportNumber, StringBuilder id) {
+    public Passenger(StringBuilder id, FlightCountry country, String name, String email, Gender gender, Integer phoneNumber, String passportNumber) {
         this.id = id;
         this.country = country;
         this.name = name;
@@ -85,7 +84,7 @@ public class Passenger {
     public String toString() {
         return "Passenger{" +
                 "id=" + id +
-                "country=" + country +
+                ", country=" + country +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
