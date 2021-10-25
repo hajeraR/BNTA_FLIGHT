@@ -7,19 +7,28 @@ import com.psychedelicairlines.Passenger.PassengerService;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class FlightBookingService {
 
+    public static FlightCountry country;
 
 //    private String country;
 
-    FlightDetails peru = new FlightDetails("Llama", "We ran out of money...", "PE-234", FlightCountry.PERU, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.NOVEMBER, 12, 13, 47), 957.00, 20, 0);
+    ArrayList<String> passengerArrayList = new ArrayList<String>();
 
-    FlightDetails madagascar = new FlightDetails("Seaplane Seabird", "Re-purposed from WW2. Book at own risk. BYOB.", "SS-001", FlightCountry.MADAGASCAR, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.JUNE, 20, 10, 30), 2300.00, 12, 0);
+    FlightCountry countryPeru = FlightCountry.PERU;
+    FlightCountry countryMadagascar = FlightCountry.MADAGASCAR;
+    FlightCountry countrySaudi = FlightCountry.SAUDI;
+    FlightCountry countryAustralia = FlightCountry.AUSTRALIA;
 
-    FlightDetails australia = new FlightDetails("Down Under", "A really, really, really long flight!", "DU-123", FlightCountry.AUSTRALIA, FlightCountry.ENGLAND, LocalDateTime.of(2021, 12, 21 ,13, 30), 800.00, 10, 0);
+    FlightDetails peru = new FlightDetails("Llama", "We ran out of money...", "PE-234", FlightCountry.PERU, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.NOVEMBER, 12, 13, 47), 957.00, 0, 0);
+
+    FlightDetails madagascar = new FlightDetails("Seaplane Seabird", "Re-purposed from WW2. Book at own risk. BYOB.", "SS-001", FlightCountry.MADAGASCAR, FlightCountry.ENGLAND, LocalDateTime.of(2021, Month.JUNE, 20, 10, 30), 2300.00, 2, 0);
+
+    FlightDetails australia = new FlightDetails("Down Under", "A really, really, really long flight!", "DU-123", FlightCountry.AUSTRALIA, FlightCountry.ENGLAND, LocalDateTime.of(2021, 12, 21, 13, 30), 800.00, 2, 0);
 
     FlightDetails saudi = new FlightDetails("Pilgrimage to Mecca","Enter at own risk, women cannot drive!", "SA-232",FlightCountry.SAUDI,FlightCountry.ENGLAND, LocalDateTime.of(2022, 03, 12 ,12, 30), 900.0,75,0);
 
@@ -37,7 +46,7 @@ public class FlightBookingService {
 
         switch(input){
             case "1":
-                flightBookingService.displayFlights();
+                displayFlights();
                 break;
             case "2":
                 System.out.println("Manage Booking");
@@ -83,9 +92,9 @@ public class FlightBookingService {
                             peru.setCapacity(++countPeru);
                             enterPassengerDetailsPeru();
 
-                            String countryPeru = peru.getDestination().toString();
+                            country = countryPeru;
                             System.out.println("");
-                            System.out.println("Your flight to " + countryPeru + " is confirmed!");
+                            System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
                             System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
 
@@ -95,7 +104,7 @@ public class FlightBookingService {
                         String option = scanner.nextLine();
                         switch (option) {
                             case "1":
-                                flightBookingService.displayFlights();
+                                displayFlights();
                                 break;
 
                             case "2":
@@ -106,7 +115,7 @@ public class FlightBookingService {
                         break;
 
                     case "2":
-                        flightBookingService.displayFlights();
+                        displayFlights();
                         break;
                 }
                 break;
@@ -123,9 +132,9 @@ public class FlightBookingService {
                             int countMadagascar = peru.getCapacity();
                             peru.setCapacity(++countMadagascar);
                             enterPassengerDetailsMadagascar();
-                            String countryMadagascar = madagascar.getDestination().toString();
+                            country = countryMadagascar;
                             System.out.println("");
-                            System.out.println("Your flight to " + countryMadagascar + " is confirmed!");
+                            System.out.println("Your flight to " + country + " is confirmed!");
                             System.out.println("");
                             System.out.println("Thank you for taking part in the Psychedelic Airlines Experience!");
                         } else System.out.println("Plane fully booked! You can no longer mingle with Madagascar's Malagasy giant rat!");
@@ -134,7 +143,7 @@ public class FlightBookingService {
                         String option = scanner.nextLine();
                         switch (option) {
                             case "1":
-                                flightBookingService.displayFlights();
+                                displayFlights();
                                 break;
 
                             case "2":
@@ -163,7 +172,7 @@ public class FlightBookingService {
                             saudi.setCapacity(++count);
                             enterPassengerDetailsSaudi();
 
-                            String countrySaudi = saudi.getDestination().toString();
+                            country = countrySaudi;
                             System.out.println("");
                             System.out.println("Your flight to " + countrySaudi + " is confirmed!");
                             System.out.println("");
@@ -202,8 +211,7 @@ public class FlightBookingService {
                             int countAustralia = australia.getCapacity();
                             peru.setCapacity(++countAustralia);
                             enterPassengerDetailsAustralia();
-
-                            String countryAustralia = australia.getDestination().toString();
+                            country = countryAustralia;
                             System.out.println("");
                             System.out.println("Your flight to " + countryAustralia + " is confirmed!");
                             System.out.println("");
@@ -245,18 +253,16 @@ public class FlightBookingService {
         String countryPeru1 = details.nextLine();
 
         if (countryPeru1.toUpperCase(Locale.ROOT).equals("PERU")) {
-            //FlightCountry countryPeruDestination = FlightCountry.valueOf(countryPeru1.toUpperCase(Locale.ROOT));
-            String countryPeruDestination = countryPeru1.toUpperCase(Locale.ROOT);
 
             System.out.println("Please enter your name:");
             String name = details.nextLine();
-            //Passenger passenger1 = new Passenger(name);
+
             System.out.println("Please enter your email:");
             String email = details.nextLine();
 
             System.out.println("Please enter your gender:");
             String gender1 = details.nextLine();
-            Gender gender = Gender.valueOf(gender1);
+            Gender gender = Gender.valueOf(gender1.toUpperCase(Locale.ROOT));
 
             System.out.println("Please enter your Passport Number:");
             String passport = details.nextLine();
@@ -265,8 +271,7 @@ public class FlightBookingService {
             Integer mobile = details.nextInt();
 
             System.out.println("");
-            ID idGenerate = new ID();
-            StringBuilder id = idGenerate.generateId("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", 6);
+            StringBuilder id = ID.generateId("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", 6);
 
 
             //FlightBookingService service = new FlightBookingService();
@@ -276,15 +281,21 @@ public class FlightBookingService {
             System.out.println("");
             System.out.println("Here are your personal details:");
             System.out.println("");
-            Passenger passenger = new Passenger(id, countryPeruDestination, name, email, gender, mobile, passport);
-            System.out.println(passenger.toString());
+            Passenger passengeri = new Passenger(id, countryPeru, name, email, gender, mobile, passport);
+            System.out.println(passengeri.toString());
             System.out.println("");
             System.out.println("May The Odds Be Ever In Your Favour!");
+
+            if (passengerArrayList.size() < peru.getCapacity()) {
+                //adding passenger to arrayList
+                passengerArrayList.add(passengeri.toString());
+                System.out.println(passengerArrayList);
+            }
 
         } else {
             System.out.println("GOT YA, ROBOT!");
             System.out.println("");
-            flightBookingService.startBooking();
+            startBooking();
 
         }
 
@@ -301,8 +312,6 @@ public class FlightBookingService {
         String countryMadagascar1 = details.nextLine();
 
         if (countryMadagascar1.toUpperCase(Locale.ROOT).equals("MADAGASCAR")) {
-            //FlightCountry countryMadagascarDestination = FlightCountry.valueOf(countryMadagascar1.toUpperCase(Locale.ROOT));
-            String countryMadagascarDestination = countryMadagascar1.toUpperCase(Locale.ROOT);
 
             System.out.println("Please enter your name:");
             String name = details.nextLine();
@@ -312,7 +321,7 @@ public class FlightBookingService {
 
             System.out.println("Please enter your gender:");
             String gender1 = details.nextLine();
-            Gender gender = Gender.valueOf(gender1);
+            Gender gender = Gender.valueOf(gender1.toUpperCase(Locale.ROOT));
 
             System.out.println("Please enter your Passport Number:");
             String passport = details.nextLine();
@@ -332,15 +341,29 @@ public class FlightBookingService {
             System.out.println("");
             System.out.println("Here are your personal details:");
             System.out.println("");
-            Passenger passenger = new Passenger(id, countryMadagascarDestination, name, email, gender, mobile, passport);
-            System.out.println(passenger.toString());
+            Passenger passengeri = new Passenger(id, countryMadagascar, name, email, gender, mobile, passport);
+            System.out.println(passengeri.toString());
             System.out.println("");
             System.out.println("May The Odds Be Ever In Your Favour!");
 
+
+            // creating an empty Arraylist
+            ArrayList<String> passengerArrayList = new ArrayList<String>();
+            //adding passenger to arrayList
+            passengerArrayList.add(passengeri.toString());
+            //creating an empty Array
+            String[] passengerArray = new String[madagascar.getCapacity()];
+
+            //filling in Array with items from the list by matching up the index
+            if (passengerArrayList.size() < madagascar.getCapacity()) {
+                //adding passenger to arrayList
+                passengerArrayList.add(passengeri.toString());
+                System.out.println(passengerArrayList);
+            }
         } else {
             System.out.println("GOT YA, ROBOT!");
             System.out.println("");
-            flightBookingService.startBooking();
+            startBooking();
 
         }
     }
@@ -354,15 +377,13 @@ public class FlightBookingService {
             System.out.println("Prove you're not a robot; enter your destination");
             String countrySaudi1 = details.nextLine();
 
-            if (countrySaudi1.toUpperCase(Locale.ROOT).equals("PERU")) {
-                //FlightCountry countryPeruDestination = FlightCountry.valueOf(countryPeru1.toUpperCase(Locale.ROOT));
-                String countrySaudiDestination = countrySaudi1.toUpperCase(Locale.ROOT);
+        if (countrySaudi1.toUpperCase(Locale.ROOT).equals("SAUDI")) {
 
-                System.out.println("Please enter your name:");
-                String name = details.nextLine();
-                //Passenger passenger1 = new Passenger(name);
-                System.out.println("Please enter your email:");
-                String email = details.nextLine();
+            System.out.println("Please enter your name:");
+            String name = details.nextLine();
+            //Passenger passenger1 = new Passenger(name);
+            System.out.println("Please enter your email:");
+            String email = details.nextLine();
 
                 System.out.println("Please enter your gender:");
                 String gender1 = details.nextLine();
@@ -382,14 +403,28 @@ public class FlightBookingService {
 //                FlightBookingService service = new FlightBookingService();
 //                String country = service.getCountry();
 
-                //show all of the flight details and passenger details and ideally send this all in an email to user:
-                System.out.println("");
-                System.out.println("Here are your personal details:");
-                System.out.println("");
-                Passenger passenger = new Passenger(id, countrySaudiDestination, name, email, gender, mobile, passport);
-                System.out.println(passenger.toString());
-                System.out.println("");
-                System.out.println("May The Odds Be Ever In Your Favour!");
+            //show all of the flight details and passenger details and ideally send this all in an email to user:
+            System.out.println("");
+            System.out.println("Here are your personal details:");
+            System.out.println("");
+            Passenger passengeri = new Passenger(id, countrySaudi, name, email, gender, mobile, passport);
+            System.out.println(passengeri.toString());
+            System.out.println("");
+            System.out.println("May The Odds Be Ever In Your Favour!");
+
+
+            // creating an empty Arraylist
+            //adding passenger to arrayList
+            passengerArrayList.add(passengeri.toString());
+            //creating an empty Array
+            String[] passengerArray = new String[saudi.getCapacity()];
+
+            //filling in Array with items from the list by matching up the index
+            if (passengerArrayList.size() < saudi.getCapacity()) {
+                //adding passenger to arrayList
+                passengerArrayList.add(passengeri.toString());
+                System.out.println(passengerArrayList);
+            }
 
             } else {
                 System.out.println("GOT YA, ROBOT!");
@@ -435,14 +470,29 @@ public class FlightBookingService {
                   // FlightBookingService service = new FlightBookingService();
 //                    String country = service.getCountry();
 
-                    //show all of the flight details and passenger details and ideally send this all in an email to user:
-                    System.out.println("");
-                    System.out.println("Here are your personal details:");
-                    System.out.println("");
-                    Passenger passenger = new Passenger(id, countryAustraliaDestination, name, email, gender, mobile, passport);
-                    System.out.println(passenger.toString());
-                    System.out.println("");
-                    System.out.println("May The Odds Be Ever In Your Favour!");
+            //show all of the flight details and passenger details and ideally send this all in an email to user:
+            System.out.println("");
+            System.out.println("Here are your personal details:");
+            System.out.println("");
+            Passenger passengeri = new Passenger(id, country, name, email, gender, mobile, passport);
+            System.out.println(passengeri.toString());
+            System.out.println("");
+            System.out.println("May The Odds Be Ever In Your Favour!");
+
+
+            // creating an empty Arraylist
+            ArrayList<String> passengerArrayList = new ArrayList<String>();
+            //adding passenger to arrayList
+            passengerArrayList.add(passengeri.toString());
+            //creating an empty Array
+            String[] passengerArray = new String[australia.getCapacity()];
+
+            //filling in Array with items from the list by matching up the index
+            if (passengerArrayList.size() < australia.getCapacity()) {
+                //adding passenger to arrayList
+                passengerArrayList.add(passengeri.toString());
+                System.out.println(passengerArrayList);
+            }
 
 
                 } else {
